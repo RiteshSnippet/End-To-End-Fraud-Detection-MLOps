@@ -8,7 +8,7 @@ package="fraud_detection"
 
 list_of_files = [
     ".github/workflows",
-    "notebooks/Data/.gitkeep",
+    "notebooks/Data",
     "notebooks/exploratory_data_analysis.ipynb",
     "notebooks/model_training.ipynb",
     f"src/{package}/__init__.py",
