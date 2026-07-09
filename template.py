@@ -29,7 +29,6 @@ list_of_files = [
     "app.py",
     "Dockerfile",
     "README.md",
-    "dvc.yaml",
     "requirements.txt",
     "setup.py"
 ]
