@@ -220,6 +220,7 @@ __marimo__/
 # Data
 notebooks/Data/
 notebooks/cleaned_data.csv
+artifacts/
 
 # Model
 notebooks/xgb_fraud_model.joblib
