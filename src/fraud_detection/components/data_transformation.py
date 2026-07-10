@@ -1,7 +1,5 @@
 import os
 import sys
-import numpy as np
-import joblib
 import pandas as pd
 from dataclasses import dataclass
 from src.fraud_detection.logger import logging
@@ -36,7 +34,7 @@ class DataTransformation:
 
             categorical_pipeline=Pipeline(
                 steps=[
-                ("one_hot_encoder", OneHotEncoder(handle_unknown='ignore'))])
+                ("one_hot_encoder", OneHotEncoder(handle_unknown='ignore', sparse_output=False))])
 
             preprocessor = ColumnTransformer(
                 transformers=[
@@ -80,12 +78,14 @@ class DataTransformation:
 
             train_arr = pd.DataFrame(
                 input_feature_train_arr,
-                columns=feature_names
+                columns=feature_names,
+                index=train_df.index
             )
 
             test_arr = pd.DataFrame(
                 input_feature_test_arr,
-                columns=feature_names
+                columns=feature_names,
+                index=test_df.index
             )
 
             train_arr[target_column_name] = target_feature_train_df.values

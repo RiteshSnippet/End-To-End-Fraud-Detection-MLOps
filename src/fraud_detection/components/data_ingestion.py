@@ -1,12 +1,10 @@
 import os
 import sys
-import numpy as np
 import pandas as pd
 from src.fraud_detection.logger import logging
 from src.fraud_detection.exception import CustomException
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
-from pathlib import Path
 
 @dataclass
 class DataIngestionConfig:

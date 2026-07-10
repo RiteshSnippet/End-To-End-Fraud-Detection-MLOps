@@ -1,10 +1,8 @@
 import os
 import sys
-import numpy as np
 import pandas as pd
 from dataclasses import dataclass
 from src.fraud_detection.logger import logging
-from sklearn.metrics import f1_score
 from src.fraud_detection.exception import CustomException
 from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
@@ -90,8 +88,8 @@ class ModelTrainer:
             Precision  : {best_model_metrics['precision']:.4f}
             Recall     : {best_model_metrics['recall']:.4f}
             F1 Score   : {best_model_metrics['f1_score']:.4f}
-            ROC-AUC    : {best_model_metrics['roc_auc']:.4f}
-            PR-AUC     : {best_model_metrics['pr_auc']:.4f}
+            ROC-AUC    : {best_model_metrics['roc_auc']}
+            PR-AUC     : {best_model_metrics['pr_auc']}
             """
             )        
 

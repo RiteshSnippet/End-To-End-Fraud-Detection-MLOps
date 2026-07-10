@@ -1,8 +1,6 @@
 import os
 import sys
 import mlflow
-import joblib
-import numpy as np
 from src.fraud_detection.exception import CustomException
 from src.fraud_detection.logger import logging 
 import mlflow.sklearn
@@ -109,4 +107,5 @@ class ModelEvaluation:
                     mlflow.sklearn.log_model(model, "Model")
                 
         except Exception as e:
+            logging.info("Exception occurred during model evaluation")
             raise CustomException(e, sys)
