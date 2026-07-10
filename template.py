@@ -20,6 +20,7 @@ list_of_files = [
     f"src/{package}/components/data_ingestion.py",
     f"src/{package}/components/data_transformation.py",
     f"src/{package}/components/model_trainer.py",
+    f"src/{package}/components/model_evaluation.py",
     f"src/{package}/pipeline/__init__.py",
     f"src/{package}/pipeline/prediction_pipeline.py",
     f"src/{package}/pipeline/training_pipeline.py",
@@ -29,7 +30,6 @@ list_of_files = [
     "app.py",
     "Dockerfile",
     "README.md",
-    "dvc.yaml",
     "requirements.txt",
     "setup.py"
 ]
