@@ -50,7 +50,7 @@ class ModelEvaluation:
         }
     
 
-    def initiate_model_evaluation(self, test_array):
+    def initiate_model_evaluation(self, test_array, best_model_name):
         try:
             target_column = "isFraud"
 
@@ -102,7 +102,7 @@ class ModelEvaluation:
                     # There are other ways to use the Model Registry, which depends on the use case,
                     # please refer to the doc for more information:
                     # https://mlflow.org/docs/latest/model-registry.html#api-workflow
-                    mlflow.sklearn.log_model(model, "Model", registered_model_name="ml_model")
+                    mlflow.sklearn.log_model(model, "Model", registered_model_name=best_model_name)
                 else:
                     mlflow.sklearn.log_model(model, "Model")
                 

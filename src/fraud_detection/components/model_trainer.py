@@ -36,9 +36,9 @@ class ModelTrainer:
             logging.info(f"Scale_Pos_Weight: {scale_pos_weight}")
 
             models = {
-                'Random Forest Classifier':RandomForestClassifier(
+                'RandomForestClassifier':RandomForestClassifier(
                     n_estimators=200, max_depth=12, class_weight="balanced",n_jobs=-1, random_state=42),
-                'XG Boost':XGBClassifier(
+                'XGBoost':XGBClassifier(
                     n_estimators=300,
                     max_depth=6,
                     learning_rate=0.1,
@@ -51,7 +51,7 @@ class ModelTrainer:
                     eval_metric="aucpr",
                     n_jobs=-1,
                     random_state=42),
-                'Cat Boost':CatBoostClassifier(
+                'CatBoost':CatBoostClassifier(
                     iterations=500,
                     depth=6,
                     learning_rate=0.05,
@@ -97,6 +97,8 @@ class ModelTrainer:
                  file_path=self.model_trainer_config.trained_model_file_path,
                  obj=best_model
             )
+
+            return best_model_name
           
         except Exception as e:
             logging.info('Exception occurred at Model Training')
