@@ -1,6 +1,8 @@
 import os
 import sys
 import mlflow
+import dagshub
+from dotenv import load_dotenv
 from src.fraud_detection.exception import CustomException
 from src.fraud_detection.logger import logging 
 import mlflow.sklearn
@@ -61,12 +63,18 @@ class ModelEvaluation:
 
             model = load_object(model_path)
 
+            load_dotenv()
+            dagshub.init(
+                repo_owner='RiteshSnippet',
+                repo_name='End-To-End-Fraud-Detection-MLOps',
+                mlflow=True
+            )
 
-            # mlflow.set_registry_uri(" ")
-                        
             tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
-            
-            print(tracking_url_type_store)
+
+            print("MLflow Tracking URI:", mlflow.get_tracking_uri())
+            print("Tracking Type:", tracking_url_type_store)
+
             logging.info("Loading trained model...")
             logging.info("Evaluating model on test dataset...")
 
@@ -102,9 +110,9 @@ class ModelEvaluation:
                     # There are other ways to use the Model Registry, which depends on the use case,
                     # please refer to the doc for more information:
                     # https://mlflow.org/docs/latest/model-registry.html#api-workflow
-                    mlflow.sklearn.log_model(model, "Model", registered_model_name=best_model_name)
+                    mlflow.sklearn.log_model(model, artifact_path="Model", registered_model_name=best_model_name)
                 else:
-                    mlflow.sklearn.log_model(model, "Model")
+                    mlflow.sklearn.log_model(model, artifact_path="Model")
                 
         except Exception as e:
             logging.info("Exception occurred during model evaluation")

@@ -8,4 +8,6 @@ scikit-learn
 xgboost
 catboost
 mlflow
+dagshub
+python-dotenv
 #-e .
