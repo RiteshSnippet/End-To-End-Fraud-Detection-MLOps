@@ -226,5 +226,3 @@ artifacts/raw_data.csv
 
 # Model
 notebooks/catboost_info/
-artifacts/Preprocessor.joblib
-artifacts/Model.joblib
