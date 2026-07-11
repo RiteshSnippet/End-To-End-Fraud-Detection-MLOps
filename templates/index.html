@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Fraud Detection System</h1>
+
+    <form action="/predict" method="POST">
+
+        <input type="number" step="any" name="amount" placeholder="Amount" required>
+
+        <input type="number" step="any" name="oldbalanceOrg" placeholder="Old Balance Origin" required>
+
+        <input type="number" step="any" name="newbalanceOrig" placeholder="New Balance Origin" required>
+
+        <input type="number" step="any" name="oldbalanceDest" placeholder="Old Balance Destination" required>
+
+        <input type="number" step="any" name="newbalanceDest" placeholder="New Balance Destination" required>
+
+        <input type="number" step="any" name="errorBalanceOrig" placeholder="Error Balance Origin" required>
+
+        <input type="number" step="any" name="errorBalanceDest" placeholder="Error Balance Destination" required>
+
+        <input type="number" name="hour" min="0" max="23" placeholder="Hour" required>
+
+        <input type="number" name="day" min="1" max="31" placeholder="Day" required>
+
+        <select name="type" required>
+            <option value="">Select Transaction Type</option>
+            <option value="PAYMENT">PAYMENT</option>
+            <option value="TRANSFER">TRANSFER</option>
+            <option value="CASH_OUT">CASH_OUT</option>
+            <option value="CASH_IN">CASH_IN</option>
+            <option value="DEBIT">DEBIT</option>
+        </select>
+
+        <button type="submit">Predict</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

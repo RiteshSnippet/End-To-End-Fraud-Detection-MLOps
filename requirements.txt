@@ -10,4 +10,5 @@ catboost
 mlflow
 dagshub
 python-dotenv
+flask
 #-e .
