@@ -10,5 +10,7 @@ catboost
 mlflow
 dagshub
 python-dotenv
-flask
+Flask
+gunicorn
+pytest
 #-e .
