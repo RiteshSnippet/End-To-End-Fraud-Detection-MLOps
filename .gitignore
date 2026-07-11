@@ -225,7 +225,6 @@ artifacts/test_data.csv
 artifacts/raw_data.csv
 
 # Model
-notebooks/xgb_fraud_model.joblib
-notebooks/xgb_feature_columns.joblib
-notebooks/xgb_metadata.json
 notebooks/catboost_info/
+artifacts/Preprocessor.joblib
+artifacts/Model.joblib

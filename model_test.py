@@ -1,39 +1,39 @@
 from src.fraud_detection.pipeline.prediction_pipeline import PredictPipeline, CustomData
 
-data = CustomData(
-    amount=850000,
-    oldbalanceOrg=900000,
-    newbalanceOrig=50000,
-
-    oldbalanceDest=10000,
-    newbalanceDest=860000,
-
-    errorBalanceOrig=0,
-    errorBalanceDest=0,
-
-    hour=2,
-    day=1,
-
-    type="TRANSFER"
-)
-
 # data = CustomData(
-#     amount=2500,
+#     amount=850000,
+#     oldbalanceOrg=900000,
+#     newbalanceOrig=50000,
 
-#     oldbalanceOrg=15000,
-#     newbalanceOrig=12500,
-
-#     oldbalanceDest=5000,
-#     newbalanceDest=7500,
+#     oldbalanceDest=10000,
+#     newbalanceDest=860000,
 
 #     errorBalanceOrig=0,
 #     errorBalanceDest=0,
 
-#     hour=14,
-#     day=15,
+#     hour=2,
+#     day=1,
 
-#     type="PAYMENT"
+#     type="TRANSFER"
 # )
+
+data = CustomData(
+    amount=2500,
+
+    oldbalanceOrg=15000,
+    newbalanceOrig=12500,
+
+    oldbalanceDest=5000,
+    newbalanceDest=7500,
+
+    errorBalanceOrig=0,
+    errorBalanceDest=0,
+
+    hour=14,
+    day=15,
+
+    type="PAYMENT"
+)
 
 input_df = data.get_data_as_dataframe()
 
