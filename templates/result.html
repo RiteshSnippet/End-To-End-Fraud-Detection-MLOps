@@ -1,28 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Prediction Result</title>
+
+    <meta charset="UTF-8">
+
+    <title>Fraud Result</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
+
 <body>
 
-<div class="container">
 
-    <h1>Prediction Result</h1>
+    <div class="result-container">
 
-    <h2>{{ prediction }}</h2>
 
-    {% if confidence is not none %}
-        <p>Fraud Probability : <strong>{{ confidence }}%</strong></p>
-    {% endif %}
+        <h1>
+            <i class="fas fa-chart-line"></i>
+            Prediction Result
+        </h1>
 
-    <a href="/">Predict Again</a>
 
-</div>
+
+        {% if prediction == "Fraud Transaction" %}
+
+
+        <h2 class="fraud">
+
+            🚨 Fraud Transaction Detected
+
+        </h2>
+
+
+        {% else %}
+
+
+        <h2 class="safe">
+
+            ✅ Legitimate Transaction
+
+        </h2>
+
+
+        {% endif %}
+
+
+
+
+        <div class="result-card">
+
+
+            <div>
+
+                <h3>
+                    Fraud Probability
+                </h3>
+
+
+                <p>
+
+                    {{ confidence }}%
+
+                </p>
+
+
+            </div>
+
+
+
+            <div>
+
+                <h3>
+                    Risk Level
+                </h3>
+
+
+                {% if prediction == "Fraud Transaction" %}
+
+                <p class="fraud">
+                    HIGH
+                </p>
+
+
+                {% else %}
+
+                <p class="safe">
+                    LOW
+                </p>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+        <a href="/">
+            <i class="fas fa-arrow-left"></i>
+            Analyze Another Transaction
+        </a>
+
+
+
+    </div>
+
 
 </body>
+
 </html>

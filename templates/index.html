@@ -1,51 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Fraud Detection</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
+
 
 <body>
 
-<div class="container">
 
-    <h1>Fraud Detection System</h1>
+    <div class="app-container">
 
-    <form action="/predict" method="POST">
 
-        <input type="number" step="any" name="amount" placeholder="Amount" required>
+        <div class="header">
 
-        <input type="number" step="any" name="oldbalanceOrg" placeholder="Old Balance Origin" required>
+            <h1>
+                <i class="fas fa-shield-halved"></i>
+                FraudAI
+            </h1>
 
-        <input type="number" step="any" name="newbalanceOrig" placeholder="New Balance Origin" required>
+            <p>
+                Analyze financial transactions using Machine Learning
+                to detect fraudulent activity.
+            </p>
 
-        <input type="number" step="any" name="oldbalanceDest" placeholder="Old Balance Destination" required>
+        </div>
 
-        <input type="number" step="any" name="newbalanceDest" placeholder="New Balance Destination" required>
 
-        <input type="number" step="any" name="errorBalanceOrig" placeholder="Error Balance Origin" required>
 
-        <input type="number" step="any" name="errorBalanceDest" placeholder="Error Balance Destination" required>
+        <form action="/predict" method="POST" class="prediction-card">
 
-        <input type="number" name="hour" min="0" max="23" placeholder="Hour" required>
 
-        <input type="number" name="day" min="1" max="31" placeholder="Day" required>
+            <div class="input-group">
 
-        <select name="type" required>
-            <option value="">Select Transaction Type</option>
-            <option value="PAYMENT">PAYMENT</option>
-            <option value="TRANSFER">TRANSFER</option>
-            <option value="CASH_OUT">CASH_OUT</option>
-            <option value="CASH_IN">CASH_IN</option>
-            <option value="DEBIT">DEBIT</option>
-        </select>
+                <input type="number" step="any" name="amount" placeholder="Transaction Amount" required>
 
-        <button type="submit">Predict</button>
 
-    </form>
+                <select name="type" required>
 
-</div>
+                    <option value="">
+                        Transaction Type
+                    </option>
+
+                    <option value="PAYMENT">
+                        Payment
+                    </option>
+
+                    <option value="TRANSFER">
+                        Transfer
+                    </option>
+
+                    <option value="CASH_OUT">
+                        Cash Out
+                    </option>
+
+                    <option value="CASH_IN">
+                        Cash In
+                    </option>
+
+                    <option value="DEBIT">
+                        Debit
+                    </option>
+
+                </select>
+
+
+                <input type="number" step="any" name="oldbalanceOrg" placeholder="Old Balance Origin" required>
+
+
+                <input type="number" step="any" name="newbalanceOrig" placeholder="New Balance Origin" required>
+
+
+                <input type="number" step="any" name="oldbalanceDest" placeholder="Old Balance Destination" required>
+
+
+                <input type="number" step="any" name="newbalanceDest" placeholder="New Balance Destination" required>
+
+
+                <input type="number" step="any" name="errorBalanceOrig" placeholder="Error Balance Origin" required>
+
+
+                <input type="number" step="any" name="errorBalanceDest" placeholder="Error Balance Destination"
+                    required>
+
+
+                <input type="number" name="hour" placeholder="Hour" required>
+
+
+                <input type="number" name="day" placeholder="Day" required>
+
+
+            </div>
+
+
+            <button type="submit">
+
+                <i class="fas fa-search"></i>
+
+                Predict Fraud
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
 
 </body>
+
 </html>

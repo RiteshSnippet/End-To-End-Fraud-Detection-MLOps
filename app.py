@@ -3,6 +3,7 @@ from src.fraud_detection.pipeline.prediction_pipeline import PredictPipeline, Cu
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -12,6 +13,7 @@ def index():
 def predict():
 
     try:
+
         data = CustomData(
             amount=float(request.form["amount"]),
             oldbalanceOrg=float(request.form["oldbalanceOrg"]),
@@ -23,25 +25,32 @@ def predict():
             hour=int(request.form["hour"]),
             day=int(request.form["day"]),
             type=request.form["type"]
+
         )
 
         pred_df = data.get_data_as_dataframe()
 
         pipeline = PredictPipeline()
-
         prediction, probability = pipeline.predict(pred_df)
 
-        result = "Fraud Transaction" if prediction[0] == 1 else "Legitimate Transaction"
+        if prediction[0] == 1:
+            result = "Fraud Transaction"
+        else:
+            result = "Legitimate Transaction"
+
+
 
         confidence = None
         if probability is not None:
             confidence = round(float(probability[0]) * 100, 2)
+
 
         return render_template(
             "result.html",
             prediction=result,
             confidence=confidence
         )
+
 
     except Exception as e:
         return render_template(
@@ -50,12 +59,15 @@ def predict():
         )
 
 
+
 @app.errorhandler(404)
 def page_not_found(e):
+
     return render_template(
         "error.html",
         error_message="Page Not Found"
-    ), 404
+    ),404
+
 
 
 @app.errorhandler(500)
@@ -63,8 +75,9 @@ def internal_server_error(e):
     return render_template(
         "error.html",
         error_message="Internal Server Error"
-    ), 500
+    ),500
+
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
